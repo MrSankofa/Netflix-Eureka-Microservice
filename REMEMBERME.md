@@ -1,4 +1,4 @@
-1. When trying to run after downloading the spring initializr project, you need do one these things
+1. When trying to run a ```mvn clean install``` after downloading the spring initializr project, you need do one these things first
 
 Option 1: Disable Eureka in Test Context
 If you don’t need service registration in your test (which is usually the case for unit/integration tests), you should disable Eureka during tests.
@@ -43,3 +43,23 @@ Annotate the test class like this:
 public class ManagementMicroserviceApplicationTests {
 }
 ```
+
+
+2. add the @EnableEurekaService to your boot component
+
+```java
+
+@SpringBootApplication
+@EnableEurekaServer
+public class ManagementMicroserviceApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ManagementMicroserviceApplication.class, args);
+	}
+
+}
+
+```
+
+
+3. Navigate to ```localhost:8085``` to see the dashboard
